@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd">
+    <suppress>
+        <notes>
+            <![CDATA[This suppresses all CVE entries that have a score below CVSS 7(medium and lower).]]></notes>
+        <cvssBelow>7</cvssBelow>
+    </suppress>
+</suppressions>

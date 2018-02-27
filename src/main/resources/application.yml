@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  contextPath: /
+  tomcat:
+    max-threads: 4
+info:
+  appName: Transactions API
+  build:
+    version: 0.0.1
+    number: 1
+spring:
+  main:
+    banner-mode: "off"
+  data:
+    cassandra:
+      keyspace-name: transactions
+      contact-points: 127.0.0.1
+      datacenter-name: datacenter1
+logging:
+  level:
+   root: INFO
