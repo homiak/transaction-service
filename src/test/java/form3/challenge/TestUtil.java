@@ -1,7 +1,6 @@
 package form3.challenge;
 
 import com.datastax.driver.core.Session;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import form3.challenge.controller.dto.*;
 import form3.challenge.repository.domain.TransactionEntity;
 import form3.challenge.service.JavaTimeAndMoneyAwareObjectMapper;
@@ -16,14 +15,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
-import static form3.challenge.TestConstants.*;
 import static java.util.Arrays.asList;
+
 
 public class TestUtil {
 
     public static final JavaTimeAndMoneyAwareObjectMapper MAPPER = new JavaTimeAndMoneyAwareObjectMapper();
     private static final CurrencyUnit GBP = Monetary.getCurrency("GBP");
     private static final CurrencyUnit USD = Monetary.getCurrency("USD");
+
+    private TestUtil() {
+    }
 
     public static TransactionEntity createTransactionEntity(final UUID transactionId, final UUID organisationId, final String type, final int version) {
         return TransactionEntity.builder()
@@ -32,20 +34,6 @@ public class TestUtil {
                 .type(type)
                 .version(version)
                 .transaction_json("{}").build();
-    }
-
-    // Creates transaction equal to the one in payment.json and the first transaction in payments.json
-    public static TransactionEntity createTransactionEntity() {
-        try {
-            return TransactionEntity.builder()
-                    .id(TRANSACTION_ID_1)
-                    .organisation_id(ORGANISATION_ID_1)
-                    .type(TRANSACTION_TYPE)
-                    .version(VERSION)
-                    .transaction_json(MAPPER.writeValueAsString(createTransaction())).build();
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static Transaction createTransaction() {
@@ -136,5 +124,4 @@ public class TestUtil {
     public static int countTransactions(final Session session) {
         return count(session, "select count(id) from transaction");
     }
-
 }

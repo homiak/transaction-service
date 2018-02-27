@@ -29,4 +29,6 @@ public class TestConstants {
     public static final Transactions TRANSACTIONS = new Transactions(asList(TRANSACTION_0, TRANSACTION_1));
 
 
+    private TestConstants() {
+    }
 }

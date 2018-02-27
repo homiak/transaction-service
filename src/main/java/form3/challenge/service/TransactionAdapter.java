@@ -9,6 +9,9 @@ public class TransactionAdapter {
 
     private final static JavaTimeAndMoneyAwareObjectMapper MAPPER = new JavaTimeAndMoneyAwareObjectMapper();
 
+    private TransactionAdapter() {
+    }
+
     public static Transaction of(final TransactionEntity transactionEntity) {
        try {
            return MAPPER.readValue(transactionEntity.getTransaction_json(), Transaction.class);
