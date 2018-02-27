@@ -49,7 +49,7 @@ You can now login into the container and create the keyspace and the tables
 
 then run
 
-`cqlsh -f 001-initial-create.cql &amp;&amp; exit`
+`cqlsh -f 001-initial-create.cql && exit`
  
 The transaction service is configured to connect to Cassandra database 
 running on the localhost and use keyspace `transactions`
