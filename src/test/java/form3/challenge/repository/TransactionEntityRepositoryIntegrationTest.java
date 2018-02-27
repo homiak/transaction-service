@@ -15,7 +15,6 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
@@ -31,7 +30,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class}, webEnvironment = RANDOM_PORT)
-@ActiveProfiles("test")
 public class TransactionEntityRepositoryIntegrationTest {
 
     @Rule
