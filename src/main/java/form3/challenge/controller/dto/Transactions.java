@@ -21,7 +21,7 @@ public class Transactions {
     @JsonProperty("links")
     private LinksDTO links;
 
-    public Transactions(List<Transaction> data) {
+    public Transactions(final List<Transaction> data) {
         this.data = data;
     }
 

@@ -106,7 +106,7 @@ public class CassandraRepository<T> {
 
     }
 
-    protected void save(final T entity, Mapper.Option... options) {
+    protected void save(final T entity, final Mapper.Option... options) {
         try {
             mapper.save(entity, options);
             String auditMessageSuccess = String.format("Saved %s", table);

@@ -25,7 +25,7 @@ public class TestUtil {
     private static final CurrencyUnit GBP = Monetary.getCurrency("GBP");
     private static final CurrencyUnit USD = Monetary.getCurrency("USD");
 
-    public static TransactionEntity createTransactionEntity(UUID transactionId, UUID organisationId, String type, int version) {
+    public static TransactionEntity createTransactionEntity(final UUID transactionId, final UUID organisationId, final String type, final int version) {
         return TransactionEntity.builder()
                 .id(transactionId)
                 .organisation_id(organisationId)
@@ -54,7 +54,7 @@ public class TestUtil {
                 "Payment", 0);
     }
 
-    public static Transaction createTransaction(UUID transactionId, UUID organisationId, String type, int version) {
+    public static Transaction createTransaction(final UUID transactionId, final UUID organisationId, final String type, final int version) {
         Transaction transaction = Transaction.builder().id(transactionId)
                 .organisation_id(organisationId)
                 .type(type)
@@ -129,11 +129,11 @@ public class TestUtil {
         return transaction;
     }
 
-    public static int count(Session session, String query) {
+    public static int count(final Session session, final String query) {
         return new Long(session.execute(query).one().getLong(0)).intValue();
     }
 
-    public static int countTransactions(Session session) {
+    public static int countTransactions(final Session session) {
         return count(session, "select count(id) from transaction");
     }
 

@@ -19,13 +19,13 @@ public class TestConfiguration {
     CassandraProperties cassandraProperties;
 
     @Autowired
-    public TestConfiguration(CassandraProperties cassandraProperties) {
+    public TestConfiguration(final CassandraProperties cassandraProperties) {
         this.cassandraProperties = cassandraProperties;
     }
 
     @Bean
     @Primary
-    public Session session(Cluster cluster) {
+    public Session session(final Cluster cluster) {
         if (cassandraProperties.getKeyspaceName() != null) {
             return cluster.connect(cassandraProperties.getKeyspaceName());
         }
@@ -34,7 +34,7 @@ public class TestConfiguration {
 
 
     @Bean(name = "sessionUnboundToKeyspace")
-    public Session sessionUnboundToKeyspace(Cluster cluster) {
+    public Session sessionUnboundToKeyspace(final Cluster cluster) {
         return cluster.connect();
     }
 

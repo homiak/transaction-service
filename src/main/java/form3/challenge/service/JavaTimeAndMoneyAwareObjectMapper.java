@@ -28,11 +28,11 @@ public class JavaTimeAndMoneyAwareObjectMapper {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
-    public String writeValueAsString(Object value) throws JsonProcessingException {
+    public String writeValueAsString(final Object value) throws JsonProcessingException {
         return mapper.writeValueAsString(value);
     }
 
-    public <T> T readValue(String json, Class<T> valueType) throws IOException {
+    public <T> T readValue(final String json, final Class<T> valueType) throws IOException {
         return mapper.readValue(json, valueType);
     }
 }

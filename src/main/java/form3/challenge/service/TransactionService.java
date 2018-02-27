@@ -26,7 +26,7 @@ public class TransactionService {
     @Autowired
     private final TransactionRepository repository;
 
-    public Optional<Transaction> getTransaction(UUID key) {
+    public Optional<Transaction> getTransaction(final UUID key) {
         Optional<TransactionEntity> transaction = repository.get(key);
         return transaction.isPresent() ? Optional.of(TransactionAdapter.of(transaction.get())) : Optional.empty();
     }
@@ -39,36 +39,36 @@ public class TransactionService {
         return new Transactions(transactions);
     }
 
-    public void updateTransaction(Transaction transaction) {
+    public void updateTransaction(final Transaction transaction) {
         repository.save(TransactionAdapter.of(transaction));
     }
 
-    public void saveTransaction(Transaction transaction) {
+    public void saveTransaction(final Transaction transaction) {
         // Cassandra does "upsert" up update, so insert and create are the same operations,
         // This method here is just for convenience
         updateTransaction(transaction);
     }
 
-    public void saveTransactions(Transactions transactions) {
+    public void saveTransactions(final Transactions transactions) {
         repository.save(transactions.getData().stream().map(TransactionAdapter::of).collect(Collectors.toSet()));
     }
 
-    public void deleteTransaction(UUID key) {
+    public void deleteTransaction(final UUID key) {
         repository.delete(key);
     }
 
-    public void deleteTransactions(Set<UUID> keys) {
+    public void deleteTransactions(final Set<UUID> keys) {
         repository.delete(keys);
     }
 
     // TODO Here we can implement all sorts of business rules on what the transaction can and cannot be
-    public void validate(Transaction transaction) {
+    public void validate(final Transaction transaction) {
         checkNotNull(transaction);
         checkNotNull(transaction.getId());
     }
 
     // TODO Here we can implement all sorts of business rules on what the transactions object can and cannot be
-    public void validate(Transactions transactions) {
+    public void validate(final Transactions transactions) {
         checkNotNull(transactions);
         checkState(transactions.getData() != null && ! transactions.getData().isEmpty());
     }

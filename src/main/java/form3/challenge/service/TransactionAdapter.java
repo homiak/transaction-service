@@ -9,7 +9,7 @@ public class TransactionAdapter {
 
     private final static JavaTimeAndMoneyAwareObjectMapper MAPPER = new JavaTimeAndMoneyAwareObjectMapper();
 
-    public static Transaction of(TransactionEntity transactionEntity) {
+    public static Transaction of(final TransactionEntity transactionEntity) {
        try {
            return MAPPER.readValue(transactionEntity.getTransaction_json(), Transaction.class);
        } catch (IOException e) {
@@ -17,7 +17,7 @@ public class TransactionAdapter {
        }
     }
 
-    public static TransactionEntity of(Transaction transaction) {
+    public static TransactionEntity of(final Transaction transaction) {
        try {
            return new TransactionEntity().builder()
                    .id(transaction.getId())

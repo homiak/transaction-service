@@ -30,7 +30,7 @@ public class CassandraConfiguration {
 
     private final CassandraProperties properties;
 
-    public CassandraConfiguration(CassandraProperties properties) {
+    public CassandraConfiguration(final CassandraProperties properties) {
         this.properties = properties;
     }
 
@@ -64,7 +64,7 @@ public class CassandraConfiguration {
     }
 
     @Bean
-    public Session session(Cluster cluster) {
+    public Session session(final Cluster cluster) {
 
         if (properties.getKeyspaceName() != null) {
             return cluster.connect(properties.getKeyspaceName());
