@@ -17,12 +17,12 @@ or build youself (see above on how)
 Transaction service requires running Cassandra server. 
 
 #### Configuring Transaction Service
-If you already have a cassandra server setup somewhere 
+If you already have a Cassandra server setup somewhere 
 you can point Transactions Service to is by providing a 
 suitable `application.yml` during startup. 
 
 #### Example application YAML
-To override defaults you can create application.yml file with the 
+To override defaults you can create `application.yml` file with the 
 following content 
 ```
 spring:
@@ -57,6 +57,6 @@ running on the localhost and use keyspace `transactions`
 Once the above is done you can start the application
 `java -jar build/libs/transactions-service-0.0.1.jar`
 
-The application configure to accept connections on `http://localhost:8080`
+The application is configured to accept connections on `http://localhost:8080`
 Navigate to `http://localhost:8080/swagger-ui.html` for endpoints
 and datamodel documentation.
